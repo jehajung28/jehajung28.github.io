@@ -73,7 +73,7 @@ input::placeholder {
 }
 
 button[type="submit"] {
-  width: 100%;
+  width: 50%;
   height: 50px;
   border: none;
   border-radius: 12px;
