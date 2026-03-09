@@ -6,28 +6,286 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-  <!-- Font Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
-  <!-- Style CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/style.css">
   <title>Happy Birthday!!! Koko :)</title>
+  <style>
+    :root {
+      --pink-deep: #d63384;
+      --pink-mid: #f48fb1;
+      --pink-soft: #fce4ec;
+      --pink-light: #fff0f5;
+      --cream: #fffaf9;
+      --text-dark: #3b1a2e;
+      --text-mid: #7a3f5e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      background: var(--cream);
+    }
+
+    .song { visibility: hidden; }
+
+    .container {
+      height: 100vh;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      visibility: hidden;
+      width: 100vw;
+      background: linear-gradient(160deg, #fff0f5 0%, #fce4ec 40%, #fffaf9 100%);
+    }
+
+    /* Soft background pattern */
+    .container::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(244,143,177,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(214,51,132,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container > div {
+      left: 0;
+      right: 0;
+      top: 20vh;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .one {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .two {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+
+    .three {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--pink-deep);
+    }
+
+    .four .text-box {
+      border: 2px solid rgba(244,143,177,0.4);
+      border-radius: 24px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      position: relative;
+      width: 600px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(214, 51, 132, 0.1);
+    }
+
+    .text-box p {
+      margin: 0;
+      text-align: left;
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .text-box span { visibility: hidden; }
+
+    .text-box .fake-btn {
+      background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+      border-radius: 10px;
+      bottom: -48px;
+      right: 5px;
+      position: absolute;
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(214,51,132,0.3);
+    }
+
+    .five p {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      position: absolute;
+      left: 0;
+      right: 0;
+      color: var(--text-dark);
+    }
+
+    .idea-3 strong {
+      border-radius: 6px;
+      display: inline-block;
+      padding: 3px 8px;
+      color: #fff;
+    }
+
+    .five .idea-5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      color: var(--pink-deep);
+    }
+
+    .idea-5 span,
+    .idea-6 span,
+    .wish-hbd span {
+      display: inline-block;
+    }
+
+    .idea-6 span {
+      font-size: 14rem;
+      color: var(--pink-mid);
+    }
+
+    .six {
+      position: relative;
+      top: 8vh;
+      z-index: 1;
+    }
+
+    .six img {
+      display: inline-block;
+      height: 340px;
+      max-width: 100%;
+      border-radius: 50% 40% 50% 40% / 40% 50% 40% 50%;
+      border: 4px solid rgba(244,143,177,0.5);
+      box-shadow:
+        0 12px 40px rgba(214, 51, 132, 0.2),
+        0 0 0 8px rgba(252, 228, 236, 0.6);
+      object-fit: cover;
+    }
+
+    .six .hat {
+      position: absolute;
+      left: 41.5%;
+      top: -35%;
+      width: 60px;
+      rotate: 14deg;
+    }
+
+    .wish {
+      margin-top: 16px;
+    }
+
+    .wish-hbd {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin: 0;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--pink-deep), #f06292, #e91e8c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wish h5 {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      margin: 12px auto 0;
+      line-height: 1.8;
+      max-width: 600px;
+      padding: 0 20px;
+    }
+
+    .ballons img {
+      display: inline-block;
+      position: absolute;
+      filter: drop-shadow(0 4px 8px rgba(214,51,132,0.2));
+    }
+
+    .ballons img:nth-child(even) { left: -10%; }
+    .ballons img:nth-child(odd)  { right: -10%; }
+    .ballons img:nth-child(3n + 0) { left: 30%; }
+
+    .seven .eight {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+    }
+
+    .eight svg {
+      left: 0;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+      width: 25px;
+      z-index: -1;
+    }
+
+    .eight svg:nth-child(1)  { fill: #f48fb1; left: 5vw;  top: 7vh;  }
+    .eight svg:nth-child(2)  { fill: #f06292; left: 35vw; top: 23vh; }
+    .eight svg:nth-child(3)  { fill: #ec407a; left: 23vw; top: 33vh; }
+    .eight svg:nth-child(4)  { fill: #e91e8c; left: 57vw; top: 43vh; }
+    .eight svg:nth-child(5)  { fill: #f48fb1; left: 7vw;  top: 68vh; }
+    .eight svg:nth-child(6)  { fill: #fce4ec; left: 77vw; top: 42vh; }
+    .eight svg:nth-child(7)  { fill: #f8bbd0; left: 83vw; top: 68vh; }
+    .eight svg:nth-child(8)  { fill: #d63384; left: 37vw; top: 86vh; }
+    .eight svg:nth-child(9)  { fill: #f48fb1; left: 87vw; top: 94vh; }
+
+    .nine p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text-dark);
+    }
+
+    #replay {
+      cursor: pointer;
+      color: var(--pink-deep);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s;
+      z-index: 3;
+    }
+    #replay:hover { opacity: 0.7; }
+
+    /* Media Queries */
+    @media screen and (max-height: 1000px) { .six .hat { left: 40%; } }
+    @media screen and (max-height: 800px)  { .six .hat { left: 37%; } }
+    @media screen and (max-height: 700px)  { .six .hat { left: 32%; } }
+    @media screen and (max-height: 850px) and (max-width: 450px) { .six .hat { left: 32%; } }
+
+    @media screen and (max-width: 500px) {
+      .one { font-size: 2.4rem; }
+      .three { font-size: 2rem; }
+      .four .text-box { width: 90%; }
+      .text-box .fake-btn { bottom: -50px; right: 5px; }
+      .idea-5 span { display: block; }
+      .idea-6 span { font-size: 9rem; }
+      .six img { height: 260px; }
+      .six .hat { width: 48px; }
+      .wish-hbd { font-size: 2em; }
+      .wish h5 { font-size: 0.85rem; }
+      .nine p { font-size: 1.3rem; }
+    }
+  </style>
 </head>
 
 <body>
-
   <audio class="song" loop autoplay>
     <source src="./music/hbd.mp3">
-    </source>
     Your browser isn't invited for super fun audio time.
   </audio>
 
   <div class="container">
-
     <div class="one">
       <h1 class="one">
-        Alooo!👋🏼 <span id="name">Koko Cina aku</span> <!-- Ganti ini jadi nama yang ultah -->
+        Alooo!👋🏼 <span id="name">Koko Cina aku</span>
       </h1>
       <p class="two" id="greetingText">Koko actually I really like your name btw! Jovian is so unique and beautiful, just like you!</p>
     </div>
@@ -39,30 +297,22 @@
     <div class="four">
       <div class="text-box">
         <p class="hbd-chatbox">
-          I hope you have a great day today, and the year ahead is full of many blessings. May all your wishes come
-          true!
+          I hope you have a great day today, and the year ahead is full of many blessings. May all your wishes come true!
         </p>
-        <p class="fake-btn">
-          Send ✨
-        </p>
+        <p class="fake-btn">Send ✨</p>
       </div>
     </div>
 
     <div class="five">
-      <p class="idea-1">
-        That's what I was going to do.
-      </p>
-      <p class="idea-2">
-        But then I stopped. I thought, <br /> "Why not make something special for koko?"
-      </p>
-      <p class="idea-3">
-        I realised I wanted to do something a little different. <br />
-        <strong>Something that would make you smile and feel special xixi </strong>
+      <p class="idea-1">That's what I was going to do.</p>
+      <p class="idea-2">But then I stopped. I thought, <br /> "Why not make something special for koko?"</p>
+      <p class="idea-3">I realised I wanted to do something a little different. <br />
+        <strong>Something that would make you smile and feel special xixi</strong>
       </p>
       <p class="idea-4">Because,</p>
       <p class="idea-5">
         You are special to me.
-        <span>😊</span>
+        <span>🌸</span>
       </p>
       <p class="idea-6">
         <span>S</span>
@@ -76,95 +326,47 @@
       <div class="wish">
         <h3 class="wish-hbd">Happy Birthday!</h3>
         <h5 class="wish-text">
-          "Semoga banyak hal baik datang ke kamu dan selalu diberkati setiap hal yang akan kamu lakuin kedepannya. Semoga bahagia selalu menemukan jalan pulang kepadamu. <br /> Lots of love and hugs on your
-          special
-          day!"
+          "Semoga banyak hal baik datang ke kamu dan selalu diberkati setiap hal yang akan kamu lakuin kedepannya. Semoga bahagia selalu menemukan jalan pulang kepadamu. <br /> Lots of love and hugs on your special day!"
         </h5>
       </div>
     </div>
 
     <div class="seven">
       <div class="ballons">
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
-        <img src="img/ballon2.svg" alt="Ballon" />
-        <img src="img/ballon1.svg" alt="Ballon" />
-        <img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
+        <img src="img/ballon2.svg" alt="Ballon" /><img src="img/ballon1.svg" alt="Ballon" /><img src="img/ballon3.svg" alt="Ballon" />
       </div>
     </div>
 
     <div class="eight">
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" /></svg>
     </div>
 
     <div class="nine">
       <p>Okay, now come back and tell me if you liked it.</p>
-      <p id="replay">
-        Or you can click here it if you want to see it again.
-      </p>
-      <p class="last-smile">😊</p>
+      <p id="replay">Or you can click here if you want to see it again.</p>
+      <p class="last-smile">🌸</p>
     </div>
   </div>
-</body>
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-<!-- SweetAlert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Main JS -->
-<script type="application/javascript" src="./scripts/birthday.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="application/javascript" src="./scripts/birthday.js"></script>
+</body>
 </html>
