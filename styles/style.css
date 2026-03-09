@@ -1,13 +1,30 @@
+/* ===========================
+   CSS Variables & Reset
+   =========================== */
+:root {
+  --pink-deep: #d63384;
+  --pink-mid: #f48fb1;
+  --pink-soft: #fce4ec;
+  --pink-light: #fff0f5;
+  --cream: #fffaf9;
+  --text-dark: #3b1a2e;
+  --text-mid: #7a3f5e;
+}
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
 }
 
-/* Login page styles */
+/* ===========================
+   Login Page
+   =========================== */
 .login_container {
   display: flex;
   flex-direction: column;
@@ -15,6 +32,8 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  z-index: 1;
 }
 
 .login_form {
@@ -22,55 +41,74 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 14px;
   width: 400px;
-  height: 300px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
 }
 
 input[type="text"],
 input[type="password"] {
-  width: 300px;
-  height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding-left: 10px;
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: rgba(255, 240, 245, 0.6);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
   outline: none;
-  border: 2px solid #000;
+  border-color: var(--pink-deep);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(214, 51, 132, 0.1);
+}
+
+input::placeholder {
+  color: #c8a0b4;
 }
 
 button[type="submit"] {
-  width: 300px;
-  height: 40px;
+  width: 100%;
+  height: 50px;
   border: none;
-  border-radius: 5px;
-  background-color: #000;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d63384, #f06292);
   color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 4px 18px rgba(214, 51, 132, 0.35);
 }
 
 button[type="submit"]:hover {
-  background-color: #fff;
-  color: #000;
-  border: 2px solid #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 51, 132, 0.45);
+  filter: brightness(1.05);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
 }
 
 .login_description {
-  font-size: 14px;
-  color: #ccc;
-  margin: 10px 0;
-  padding: 0 10px;
+  font-size: 0.78rem;
+  color: #b07898;
+  margin-top: 20px;
   text-align: center;
+  font-style: italic;
+  line-height: 1.6;
 }
 
-/* Birtday page styles */
+/* ===========================
+   Birthday Page
+   =========================== */
 .song {
   visibility: hidden;
 }
@@ -83,6 +121,18 @@ button[type="submit"]:hover {
   text-align: center;
   visibility: hidden;
   width: 100vw;
+  background: linear-gradient(160deg, #fff0f5 0%, #fce4ec 40%, #fffaf9 100%);
+}
+
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(244, 143, 177, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(214, 51, 132, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .container > div {
@@ -90,33 +140,50 @@ button[type="submit"]:hover {
   right: 0;
   top: 20vh;
   position: absolute;
+  z-index: 1;
 }
 
+/* Section 1 - Greeting */
 .one {
-  font-size: 4.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  color: var(--text-dark);
+  line-height: 1.2;
 }
 
 .two {
-  font-size: 1.2rem;
-  font-weight: lighter;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  font-style: italic;
 }
 
+/* Section 3 - Birthday announcement */
 .three {
-  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: var(--pink-deep);
 }
 
+/* Section 4 - Chat bubble */
 .four .text-box {
-  border: 2px solid #ccc;
-  border-radius: 20px;
+  border: 2px solid rgba(244, 143, 177, 0.4);
+  border-radius: 24px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px 24px;
   position: relative;
   width: 600px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(214, 51, 132, 0.1);
 }
 
 .text-box p {
   margin: 0;
   text-align: left;
+  color: var(--text-dark);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .text-box span {
@@ -124,30 +191,37 @@ button[type="submit"]:hover {
 }
 
 .text-box .fake-btn {
-  background-color: rgb(21, 161, 237);
-  border-radius: 5px;
-  bottom: -50px;
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+  border-radius: 10px;
+  bottom: -48px;
   right: 5px;
   position: absolute;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
 }
 
+/* Section 5 - Story text */
 .five p {
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   position: absolute;
   left: 0;
   right: 0;
+  color: var(--text-dark);
 }
 
 .idea-3 strong {
-  border-radius: 3px;
+  border-radius: 6px;
   display: inline-block;
-  padding: 3px 5px;
+  padding: 3px 8px;
 }
 
 .five .idea-5 {
-  font-size: 4rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  color: var(--pink-deep);
 }
 
 .idea-5 span,
@@ -157,20 +231,27 @@ button[type="submit"]:hover {
 }
 
 .idea-6 span {
-  font-size: 15rem;
+  font-size: 14rem;
+  color: var(--pink-mid);
 }
 
+/* Section 6 - Photo & wish */
 .six {
   position: relative;
-  top: 10vh;
+  top: 8vh;
   z-index: 1;
 }
 
 .six img {
   display: inline-block;
-  height: 350px;
+  height: 340px;
   max-width: 100%;
-  border-radius: 14px;
+  border-radius: 50% 40% 50% 40% / 40% 50% 40% 50%;
+  border: 4px solid rgba(244, 143, 177, 0.5);
+  box-shadow:
+    0 12px 40px rgba(214, 51, 132, 0.2),
+    0 0 0 8px rgba(252, 228, 236, 0.6);
+  object-fit: cover;
 }
 
 .six .hat {
@@ -181,23 +262,43 @@ button[type="submit"]:hover {
   rotate: 14deg;
 }
 
+.wish {
+  margin-top: 16px;
+}
+
+.wish-hbd {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  margin: 0;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--pink-deep), #f06292, #e91e8c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wish h5 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  margin: 12px auto 0;
+  line-height: 1.8;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+/* Section 7 - Balloons */
 .ballons img {
   display: inline-block;
   position: absolute;
+  filter: drop-shadow(0 4px 8px rgba(214, 51, 132, 0.2));
 }
 
-.ballons img:nth-child(even) {
-  left: -10%;
-}
+.ballons img:nth-child(even) { left: -10%; }
+.ballons img:nth-child(odd)  { right: -10%; }
+.ballons img:nth-child(3n + 0) { left: 30%; }
 
-.ballons img:nth-child(odd) {
-  right: -10%;
-}
-
-.ballons img:nth-child(3n + 0) {
-  left: 30%;
-}
-
+/* Section 8 - Confetti circles */
 .seven .eight {
   height: 100vh;
   position: fixed;
@@ -214,150 +315,62 @@ button[type="submit"]:hover {
   z-index: -1;
 }
 
-.eight svg:nth-child(1) {
-  fill: #bd6ecf;
-  left: 5vw;
-  top: 7vh;
-}
+.eight svg:nth-child(1)  { fill: #f48fb1; left: 5vw;  top: 7vh;  }
+.eight svg:nth-child(2)  { fill: #f06292; left: 35vw; top: 23vh; }
+.eight svg:nth-child(3)  { fill: #ec407a; left: 23vw; top: 33vh; }
+.eight svg:nth-child(4)  { fill: #e91e8c; left: 57vw; top: 43vh; }
+.eight svg:nth-child(5)  { fill: #f48fb1; left: 7vw;  top: 68vh; }
+.eight svg:nth-child(6)  { fill: #fce4ec; left: 77vw; top: 42vh; }
+.eight svg:nth-child(7)  { fill: #f8bbd0; left: 83vw; top: 68vh; }
+.eight svg:nth-child(8)  { fill: #d63384; left: 37vw; top: 86vh; }
+.eight svg:nth-child(9)  { fill: #f48fb1; left: 87vw; top: 94vh; }
 
-.eight svg:nth-child(2) {
-  fill: #7dd175;
-  left: 35vw;
-  top: 23vh;
-}
-
-.eight svg:nth-child(3) {
-  fill: #349d8b;
-  left: 23vw;
-  top: 33vh;
-}
-
-.eight svg:nth-child(4) {
-  fill: #347a9d;
-  left: 57vw;
-  top: 43vh;
-}
-
-.eight svg:nth-child(5) {
-  fill: #c66053;
-  left: 7vw;
-  top: 68vh;
-}
-
-.eight svg:nth-child(6) {
-  fill: #bfaa40;
-  left: 77vw;
-  top: 42vh;
-}
-
-.eight svg:nth-child(7) {
-  fill: #e3bae8;
-  left: 83vw;
-  top: 68vh;
-}
-
-.eight svg:nth-child(8) {
-  fill: #8762cb;
-  left: 37vw;
-  top: 86vh;
-}
-
-.eight svg:nth-child(9) {
-  fill: #9a90da;
-  left: 87vw;
-  top: 94vh;
-}
-
-.wish-hbd {
-  font-size: 3em;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.wish h5 {
-  font-size: 2rem;
-  font-weight: lighter;
-  margin: 10px 0 0;
-}
-
+/* Section 9 - Ending */
 .nine p {
-  font-size: 2rem;
-  font-weight: lighter;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text-dark);
 }
 
 #replay {
   cursor: pointer;
+  color: var(--pink-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s;
   z-index: 3;
 }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
+#replay:hover {
+  opacity: 0.7;
 }
 
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
+/* ===========================
+   Media Queries
+   =========================== */
+@media screen and (max-height: 1000px) { .six .hat { left: 40%; } }
+@media screen and (max-height: 800px)  { .six .hat { left: 37%; } }
+@media screen and (max-height: 700px)  { .six .hat { left: 32%; } }
+@media screen and (max-height: 850px) and (max-width: 450px) { .six .hat { left: 32%; } }
 
 @media screen and (max-width: 500px) {
-  .login_form{
-    width: 350px;
-    height: 250px;
-  }
+  .login_form { width: 320px; }
 
-  .container {
-    width: 100%;
-    padding: 0 10px;
-  }
+  .one { font-size: 2.4rem; }
+  .three { font-size: 2rem; }
 
-  .four .text-box {
-    width: 90%;
-  }
+  .four .text-box { width: 90%; }
+  .text-box .fake-btn { bottom: -50px; right: 5px; }
 
-  .text-box .fake-btn {
-    bottom: -50px;
-    right: 5px;
-  }
+  .idea-5 span { display: block; }
+  .idea-6 span { font-size: 9rem; }
 
-  .idea-5 span {
-    display: block;
-  }
+  .six img { height: 260px; }
+  .six .hat { width: 48px; }
 
-  .idea-6 span {
-    font-size: 10rem;
-  }
+  .wish-hbd { font-size: 2em; }
+  .wish h5 { font-size: 0.85rem; }
 
-  .six .hat {
-    /* top: -20px; */
-    width: 50px;
-  }
-
-  .wish-hbd {
-    font-size: 2.2em;
-  }
-
-  .wish h5 {
-    font-size: .8rem;
-  }
-
-  .nine p {
-    font-size: 1.5rem;
-    font-weight: lighter;
-  }
+  .nine p { font-size: 1.3rem; }
 }
