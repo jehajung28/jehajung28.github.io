@@ -254,15 +254,15 @@ button[type="submit"]:active {
   object-fit: cover;
 }
 
-.six .hat {
-  position: absolute;
-  right: calc(50% - 220px);
-  top: -10%;
-  width: 40px;   /* ← lebih kecil */
-  height: auto;  /* ← ikuti proporsi asli SVG */
-  rotate: 45deg;
-  z-index: 10;
-}
+ .six .hat {
+      position: absolute;
+      right: calc(50% - 230px);  /* ← geser sedikit ke kanan */
+      top: -8%;                  /* ← lebih dekat ke foto */
+      width: 80px;               /* ← lebih besar dari 40px */
+      height: auto;
+      rotate: 45deg;
+      z-index: 10;
+    }
 
 .wish {
   margin-top: 16px;
