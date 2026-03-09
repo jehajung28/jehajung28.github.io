@@ -256,10 +256,11 @@ button[type="submit"]:active {
 
 .six .hat {
   position: absolute;
-  left: 41.5%;
-  top: -35%;
+  right: calc(50% - 220px);  /* ← jangan lupa ganti left ke right */
+  top: -10%;
   width: 60px;
-  rotate: 14deg;
+  height: 60px;   /* ← tambah ini */
+  rotate: 45deg;
 }
 
 .wish {
