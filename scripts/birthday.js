@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     confirmButtonColor: "#d63384",
     cancelButtonColor: "#f48fb1",
     confirmButtonText: "Iya dong 🌸",
-    cancelButtonText: "Nanti aja",
+    cancelButtonText: "Tentu",
     background: "#fff0f5",
     color: "#3b1a2e",
     iconColor: "#d63384",
