@@ -240,6 +240,10 @@ button[type="submit"]:active {
   position: relative;
   top: 2vh;   /* ← dari 8vh jadi 2vh, makin kecil makin ke atas */
   z-index: 1;
+     display: flex;          /* ← tambah ini */
+  flex-direction: column; /* ← tambah ini */
+  align-items: center;    /* ← tambah ini */
+  gap: 0px;               /* ← tidak ada jarak antar elemen */
 }
 
 .six .profile-picture {
