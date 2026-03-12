@@ -259,19 +259,19 @@ button[type="submit"]:active {
  .six .hat {
   position: absolute;
   right: calc(50% - 249px);
-  top: 7%;
+  top: -15%;
   width: 135px;
   height: auto;
   rotate: 51deg;
   z-index: 10;
 }
 .wish {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .wish-hbd {
   font-family: 'Playfair Display', serif;
-  font-size: 3em;
+  font-size: 4em;
   margin: 0;
   text-transform: uppercase;
   background: linear-gradient(135deg, var(--pink-deep), #f06292, #e91e8c);
