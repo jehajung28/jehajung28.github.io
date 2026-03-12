@@ -242,7 +242,7 @@ button[type="submit"]:active {
   z-index: 1;
 }
 
-.six img {
+.six .profile-picture {
   display: inline-block;
   height: 400px;        /* ← lebih besar dari 340px */
   width: 400px;         /* ← tambah width supaya bulat sempurna */
