@@ -252,6 +252,7 @@ button[type="submit"]:active {
     0 12px 40px rgba(214, 51, 132, 0.2),
     0 0 0 8px rgba(252, 228, 236, 0.6);
   object-fit: cover;
+   position: relative;  /* ← tambah ini */
    z-index: 1;  /* ← lebih rendah dari topi yang z-index: 10 */
 }
 
